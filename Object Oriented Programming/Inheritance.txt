@@ -1,0 +1,194 @@
+INHERITANCE IN C++ - AN OVERVIEW
+================================
+
+Reusability is a very important feature of OOPs.
+
+• In C++, we can reuse a class and add additional features to it.
+• Reusing classes saves time and money.
+• Reusing already tested and debugged classes saves a lot of effort in
+  developing and debugging the same thing again.
+
+WHAT IS INHERITANCE IN C++?
+===========================
+
+• The concept of reusability in C++ is supported using inheritance.
+• We can reuse the properties of an existing class by inheriting it.
+• The existing class is called the BASE CLASS.
+• The new class which is inherited from the base class is called the
+  DERIVED CLASS.
+• Reusing classes saves time and money.
+• There are different types of inheritance in C++.
+
+FORMS OF INHERITANCE IN C++
+===========================
+
+1. Single Inheritance
+2. Multiple Inheritance
+3. Hierarchical Inheritance
+4. Multilevel Inheritance
+5. Hybrid Inheritance
+
+
+1. SINGLE INHERITANCE
+=====================
+
+Single inheritance is a type of inheritance in which one derived class
+is inherited from only one base class.
+
+Example:
+The Programmer class is inherited from the Employee class. Therefore,
+Programmer can use the accessible properties and functions of Employee.
+
+DIAGRAM:
+
+        +----------------+
+        |    Employee    |
+        |  (Base Class)  |
+        +----------------+
+                |
+                |
+                v
+        +----------------+
+        |   Programmer   |
+        | (Derived Class)|
+        +----------------+
+
+
+2. MULTIPLE INHERITANCE
+=======================
+
+Multiple inheritance is a type of inheritance in which one derived class
+is inherited from more than one base class.
+
+Example:
+The Programmer class is inherited from both Employee and Assistant.
+Therefore, Programmer can use the accessible properties and functions
+of both classes.
+
+DIAGRAM:
+
+        +----------------+       +----------------+
+        |    Employee    |       |   Assistant    |
+        |  (Base Class)  |       |  (Base Class)  |
+        +----------------+       +----------------+
+                 \                     /
+                  \                   /
+                   \                 /
+                    v               v
+                     +----------------+
+                     |   Programmer   |
+                     | (Derived Class)|
+                     +----------------+
+
+
+3. HIERARCHICAL INHERITANCE
+===========================
+
+Hierarchical inheritance is a type of inheritance in which several
+derived classes are inherited from a single base class.
+
+Example:
+The Manager and Programmer classes are inherited from the Employee class.
+Both derived classes can use the accessible properties and functions
+of Employee.
+
+DIAGRAM:
+
+                  +----------------+
+                  |    Employee    |
+                  |  (Base Class)  |
+                  +----------------+
+                     /           \
+                    /             \
+                   v               v
+        +----------------+   +----------------+
+        |    Manager     |   |   Programmer   |
+        | (Derived Class)|   | (Derived Class)|
+        +----------------+   +----------------+
+
+
+4. MULTILEVEL INHERITANCE
+=========================
+
+Multilevel inheritance is a type of inheritance in which a derived
+class becomes the base class for another class.
+
+Example:
+Mammal is inherited from Animal, and Cow is inherited from Mammal.
+Therefore, Cow can access the accessible properties and functions
+inherited through Mammal from Animal.
+
+DIAGRAM:
+
+        +----------------+
+        |     Animal     |
+        |  (Base Class)  |
+        +----------------+
+                |
+                v
+        +----------------+
+        |     Mammal     |
+        | (Derived Class)|
+        +----------------+
+                |
+                v
+        +----------------+
+        |      Cow       |
+        | (Derived Class)|
+        +----------------+
+
+
+5. HYBRID INHERITANCE
+=====================
+
+Hybrid inheritance is a combination of two or more types of inheritance.
+A common example combines hierarchical and multiple inheritance.
+
+Example:
+Mammal and Bird are inherited from Animal, and Bat is inherited from
+both Mammal and Bird.
+
+DIAGRAM:
+
+                    +----------------+
+                    |     Animal     |
+                    |  (Base Class)  |
+                    +----------------+
+                       /           \
+                      /             \
+                     v               v
+          +----------------+   +----------------+
+          |     Mammal     |   |      Bird      |
+          | (Derived Class)|   | (Derived Class)|
+          +----------------+   +----------------+
+                     \             /
+                      \           /
+                       v         v
+                    +----------------+
+                    |      Bat       |
+                    | (Derived Class)|
+                    +----------------+
+
+
+QUICK COMPARISON
+================
+
+Single       : One Base Class -> One Derived Class
+Multiple     : Multiple Base Classes -> One Derived Class
+Hierarchical : One Base Class -> Multiple Derived Classes
+Multilevel   : Base -> Derived -> Further Derived
+Hybrid       : Combination of two or more inheritance types
+
+
+IMPORTANT TERMS
+===============
+
+Base Class:
+The existing class whose properties and functions are inherited.
+
+Derived Class:
+The new class that inherits properties and functions from a base class.
+
+Inheritance:
+The OOP concept that allows a new class to reuse features of an
+existing class.
