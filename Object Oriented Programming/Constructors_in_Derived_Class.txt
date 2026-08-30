@@ -1,0 +1,177 @@
+╔════════════════════════════════════════════════════╗
+║     📘 CONSTRUCTORS IN DERIVED CLASS IN C++        ║
+╚════════════════════════════════════════════════════╝
+
+🔹 1. Constructors in Derived Class
+
+✅ We can use constructors in derived classes in C++.
+
+📌 Case 1: Base class constructor has NO arguments.
+➡️ If the base class constructor does not have any arguments,
+   there is NO need to write a constructor in the derived class.
+
+📌 Case 2: Base class constructor HAS arguments
+➡️ If the base class constructor has one or more arguments,
+   the derived class must pass the required arguments to the
+   base class constructor.
+
+📌 Important Rule ⭐
+➡️ If BOTH base and derived classes have constructors:
+   🔸 Base class constructor executes FIRST.
+   🔸 Derived class constructor executes SECOND.
+
+Example:
+    Base Constructor
+          ↓
+    Derived Constructor
+
+
+════════════════════════════════════════════════════
+🏗️ 2. CONSTRUCTORS IN MULTIPLE INHERITANCE
+════════════════════════════════════════════════════
+
+📌 Rule:
+➡️ In multiple inheritance, base class constructors are called
+   in the SAME ORDER in which the base classes appear in the
+   class declaration.
+
+Example 1:
+
+    class C : public A, public B
+
+Order:
+    🥇 A constructor
+    🥈 B constructor
+    🥉 C constructor
+
+⚠️ Important:
+The order depends on the class declaration, NOT on the
+order in which constructors are written in the initializer list.
+
+Example 2:
+
+    class C : public B, public A
+
+Order:
+    🥇 B constructor
+    🥈 A constructor
+    🥉 C constructor
+
+
+════════════════════════════════════════════════════
+🔗 3. CONSTRUCTORS IN MULTILEVEL INHERITANCE
+════════════════════════════════════════════════════
+
+📌 Rule:
+➡️ In multilevel inheritance, constructors execute according
+   to the order of inheritance.
+
+Example:
+
+    A
+    ↓
+    B
+    ↓
+    C
+
+Constructor order:
+    🥇 A constructor
+    🥈 B constructor
+    🥉 C constructor
+
+💡 Easy way to remember:
+    Parent → Child → Grandchild
+
+
+════════════════════════════════════════════════════
+✨ 4. SPECIAL SYNTAX FOR MULTIPLE BASE CLASSES
+════════════════════════════════════════════════════
+
+C++ provides a special syntax called a
+🔸 Constructor Initializer List 🔸
+
+It is used to pass arguments from the derived class constructor
+to the constructors of its base classes.
+
+📌 Basic idea:
+
+    Derived Constructor
+          ↓
+    ┌─────┴─────┐
+    ↓           ↓
+ Base 1       Base 2
+ Constructor  Constructor
+
+
+📝 General Syntax:
+
+    DerivedConstructor(arg1, arg2, arg3, arg4)
+        : Base1Constructor(arg1, arg2),
+          Base2Constructor(arg3, arg4)
+    {
+        // Derived class body
+    }
+
+⭐ Remember:
+➡️ Arguments are passed to the respective base class constructors.
+➡️ Base class constructors execute BEFORE the body of the
+   derived class constructor.
+
+
+════════════════════════════════════════════════════
+🌳 5. SPECIAL CASE: VIRTUAL BASE CLASS
+════════════════════════════════════════════════════
+
+📌 Rule 1:
+➡️ Constructors of virtual base classes are called BEFORE
+   non-virtual base class constructors.
+
+📌 Rule 2:
+➡️ If there are multiple virtual base classes, they are
+   constructed in the order in which they are declared.
+
+📌 Rule 3:
+➡️ After virtual base classes, non-virtual base classes
+   are constructed.
+
+📌 Rule 4:
+➡️ Finally, the derived class constructor is executed.
+
+
+⭐ EASY ORDER TO REMEMBER ⭐
+
+    Virtual Base Classes
+             ↓
+    Non-Virtual Base Classes
+             ↓
+    Derived Class Constructor
+
+
+════════════════════════════════════════════════════
+🧠 QUICK REVISION
+════════════════════════════════════════════════════
+
+🔹 Normal inheritance:
+   Base → Derived
+
+🔹 Multiple inheritance:
+   Base classes are called in the order of declaration.
+
+🔹 Multilevel inheritance:
+   Grandparent → Parent → Child
+
+🔹 Virtual base class:
+   Virtual Base → Non-Virtual Base → Derived
+
+🔹 Initializer list:
+   Used to pass arguments to base class constructors.
+
+🔹 Most important ⭐:
+   BASE CONSTRUCTOR ALWAYS RUNS BEFORE DERIVED
+   CONSTRUCTOR.
+
+════════════════════════════════════════════════════
+📌 ONE-LINE MEMORY TRICK
+
+   "First build the parent, then build the child." 👨‍👦
+════════════════════════════════════════════════════
