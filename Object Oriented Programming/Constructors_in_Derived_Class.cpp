@@ -41,7 +41,7 @@ class Derived : public Base2, public Base1
     int derived1, derived2;
 
 public:
-    Derived(int a, int b, int c, int d) : Base1(a), Base2(b)
+    Derived(int a, int b, int c, int d) : Base2(a), Base1(b)
     {
         derived1 = c;
         derived2 = d;
