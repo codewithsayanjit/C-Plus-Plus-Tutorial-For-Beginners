@@ -26,7 +26,7 @@ int main()
 
     BaseClass obj_base;
     DerivedClass obj_derived;
-    
+
     base_class_pointer = &obj_derived; // Pointing base class pointer to derived class
 
     base_class_pointer->var_base = 34;
