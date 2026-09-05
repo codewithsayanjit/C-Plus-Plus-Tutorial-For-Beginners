@@ -1,0 +1,409 @@
+POLYMORPHISM IN C++
+====================
+
+📌 Meaning of Polymorphism
+--------------------------
+"Poly" means several and "morphism" means form.
+
+So, polymorphism means:
+
+👉 One name + Multiple forms
+
+Polymorphism allows the same function name or interface to perform different tasks depending on the situation.
+
+There are two main types of polymorphism:
+
+1. Compile-Time Polymorphism
+2. Run-Time Polymorphism
+
+
+1️⃣ COMPILE-TIME POLYMORPHISM
+=============================
+
+In compile-time polymorphism, the compiler decides which function will run during compilation.
+
+It is also called:
+
+👉 Early Binding
+👉 Static Binding
+
+The compiler already knows which function should be called.
+
+Types of compile-time polymorphism:
+
+1. Function Overloading
+2. Operator Overloading
+
+
+🔹 1. Function Overloading
+--------------------------
+
+Function overloading allows us to create multiple functions with the same name but different parameters.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+class Calculator
+{
+public:
+    int add(int a, int b)
+    {
+        return a + b;
+    }
+
+    int add(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+};
+
+int main()
+{
+    Calculator c;
+
+    cout << c.add(10, 20) << endl;
+    cout << c.add(10, 20, 30) << endl;
+
+    return 0;
+}
+
+Output:
+
+30
+60
+
+🧠 Explanation:
+
+add(10, 20)
+     ↓
+Compiler finds:
+int add(int, int)
+     ↓
+Returns 30
+
+
+add(10, 20, 30)
+     ↓
+Compiler finds:
+int add(int, int, int)
+     ↓
+Returns 60
+
+
+📊 Function Overloading Diagram:
+
+             add()
+               |
+       ┌───────┴────────┐
+       ↓                ↓
+   2 parameters     3 parameters
+       ↓                ↓
+   add(10,20)      add(10,20,30)
+       ↓                ↓
+      30               60
+
+👉 Same function name
+👉 Different parameters
+👉 Decision made at compile time
+
+
+🔹 2. Operator Overloading
+---------------------------
+
+Operator overloading allows us to give a special meaning to an operator when it is used with objects.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+class Number
+{
+    int value;
+
+public:
+    Number(int v)
+    {
+        value = v;
+    }
+
+    Number operator+(Number n)
+    {
+        return Number(value + n.value);
+    }
+
+    void display()
+    {
+        cout << value << endl;
+    }
+};
+
+int main()
+{
+    Number n1(10);
+    Number n2(20);
+
+    Number n3 = n1 + n2;
+
+    n3.display();
+
+    return 0;
+}
+
+Output:
+
+30
+
+🧠 Explanation:
+
+n1 + n2
+   ↓
+operator+()
+   ↓
+value of n1 + value of n2
+   ↓
+10 + 20
+   ↓
+30
+
+
+📊 Operator Overloading Diagram:
+
+      n1 + n2
+         |
+         ↓
+    operator+()
+         |
+     ┌───┴───┐
+     ↓       ↓
+    n1       n2
+    10       20
+     \       /
+      \     /
+       \   /
+        ↓
+      10 + 20
+         ↓
+        30
+
+👉 Same "+" operator
+👉 Different behavior for objects
+👉 Decision made at compile time
+
+
+2️⃣ RUN-TIME POLYMORPHISM
+=========================
+
+In run-time polymorphism, the decision about which function to execute is made during program execution.
+
+It is also called:
+
+👉 Late Binding
+👉 Dynamic Binding
+
+Run-time polymorphism is commonly achieved using virtual functions.
+
+
+🔹 3. Virtual Function
+----------------------
+
+A virtual function is a member function declared with the keyword "virtual" in the base class.
+
+When a derived class overrides the virtual function, a base-class pointer
+or reference can call the derived-class version at run time.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+public:
+    virtual void sound()
+    {
+        cout << "Animal makes a sound" << endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void sound() override
+    {
+        cout << "Dog barks" << endl;
+    }
+};
+
+class Cat : public Animal
+{
+public:
+    void sound() override
+    {
+        cout << "Cat meows" << endl;
+    }
+};
+
+int main()
+{
+    Animal *ptr;
+
+    Dog d;
+    Cat c;
+
+    ptr = &d;
+    ptr->sound();
+
+    ptr = &c;
+    ptr->sound();
+
+    return 0;
+}
+
+Output:
+
+Dog barks
+Cat meows
+
+
+🧠 How Virtual Function Works:
+
+                Animal
+              (Base Class)
+                  |
+            virtual sound()
+                  |
+          ┌───────┴───────┐
+          ↓               ↓
+         Dog             Cat
+          |               |
+      sound()           sound()
+          |               |
+      "Dog barks"      "Cat meows"
+
+
+Runtime Flow:
+
+        Animal *ptr
+             |
+             ↓
+          ptr = &d
+             |
+             ↓
+       ptr->sound()
+             |
+             ↓
+        Dog::sound()
+             |
+             ↓
+       🐶 Dog barks
+
+
+        Animal *ptr
+             |
+             ↓
+          ptr = &c
+             |
+             ↓
+       ptr->sound()
+             |
+             ↓
+        Cat::sound()
+             |
+             ↓
+       🐱 Cat meows
+
+
+⭐ IMPORTANT DIFFERENCE
+======================
+
+Compile-Time Polymorphism
+-------------------------
+⏰ Decision: During compilation
+🔗 Binding: Early / Static Binding
+⚡ Usually faster
+🛠️ Examples:
+   • Function Overloading
+   • Operator Overloading
+
+Run-Time Polymorphism
+---------------------
+⏰ Decision: During program execution
+🔗 Binding: Late / Dynamic Binding
+🛠️ Commonly achieved using virtual functions
+
+
+📊 COMPLETE POLYMORPHISM DIAGRAM
+================================
+
+                    POLYMORPHISM
+                         |
+              ┌──────────┴──────────┐
+              ↓                     ↓
+       COMPILE-TIME             RUN-TIME
+       POLYMORPHISM            POLYMORPHISM
+              |                     |
+       ┌──────┴──────┐              |
+       ↓             ↓              ↓
+  Function       Operator      Virtual Function
+  Overloading    Overloading        |
+       |             |              |
+       ↓             ↓         ┌────┴────┐
+   Same name     Operators     ↓         ↓
+   + different   with user    Base      Derived
+   parameters    defined      Class     Class
+                 behavior        |         |
+                                 └────┬────┘
+                                      ↓
+                               Decision at runtime
+
+
+🎯 EASY WAY TO REMEMBER
+========================
+
+Polymorphism
+     ↓
+One Name + Multiple Forms
+     ↓
+┌──────────────────────────────┐
+│                              │
+↓                              ↓
+Compile Time                 Run Time
+│                              │
+├─ Function Overloading        └─ Virtual Function
+└─ Operator Overloading
+
+
+💡 Simple Example in Real Life
+------------------------------
+
+A person can "speak" in different languages.
+
+🗣️ speak()
+   ├── English
+   ├── Bengali
+   └── Hindi
+
+The same idea is used in C++ polymorphism:
+
+🔤 One function name
+       +
+🔄 Different behavior
+       =
+✨ Polymorphism
+
+
+📌 KEY POINTS
+=============
+
+1. Polymorphism means "one name, multiple forms".
+2. Compile-time polymorphism is decided by the compiler.
+3. Function overloading is compile-time polymorphism.
+4. Operator overloading is compile-time polymorphism.
+5. Run-time polymorphism is decided during program execution.
+6. Virtual functions are used to achieve run-time polymorphism.
+7. The keyword "virtual" is written in the base class.
+8. A derived class can override the virtual function.
+9. Base-class pointers or references can call the appropriate derived-class function at run time.
