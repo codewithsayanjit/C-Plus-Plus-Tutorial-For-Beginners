@@ -4,27 +4,34 @@ using namespace std;
 
 int main()
 {
-    string st1 = "Sayanjit Jana is a good boy and he is a good programmer.";
+    string st = "Sayanjit Jana";
     string st2;
 
     // Opening sampleA.txt using ofstream constructor
     // ofstream is used for writing data into a file
-    ofstream write("sampleA.txt");
+    ofstream out("sampleA.txt");
 
     // Writing the string "Sayanjit Jana" into sampleA.txt
-    write << st1;
+    out << st;
+
+    // Closing the output file
+    out.close();
 
     // Opening sampleB.txt using ifstream constructor
     // ifstream is used for reading data from a file
-    ifstream read("sampleB.txt");
+    ifstream in("sampleB.txt");
 
     // Reading a word from sampleB.txt
-    read >> st2;
+    in >> st2;
 
     // Reading a complete line from sampleB.txt
-    getline(read, st2);
+    getline(in, st2);
 
     // Displaying the content read from the file
     cout << st2;
+
+    // Closing the input file
+    in.close();
+
     return 0;
 }
