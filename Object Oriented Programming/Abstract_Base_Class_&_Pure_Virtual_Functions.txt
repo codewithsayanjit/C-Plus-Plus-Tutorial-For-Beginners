@@ -1,0 +1,98 @@
+PURE VIRTUAL FUNCTION AND ABSTRACT BASE CLASS IN C++
+======================================================
+
+🔹 Pure Virtual Function
+------------------------
+A pure virtual function is a virtual function that has no implementation in the base class.
+
+It is declared by assigning = 0 to the function.
+
+Syntax:
+    virtual void display() = 0;
+
+📌 Important Points:
+• A pure virtual function is declared using = 0.
+• It is mainly used to define a common interface for derived classes.
+• A class containing at least one pure virtual function becomes an abstract class.
+• A pure virtual function must be overridden by a derived class to create its object.
+
+Example:
+    class Base
+    {
+    public:
+        virtual void display() = 0;
+    };
+
+
+🔹 Abstract Base Class
+----------------------
+An abstract base class is a class that contains at least one pure virtual function.
+
+📌 Important Points:
+• Objects of an abstract class cannot be created directly.
+• It is used as a base class for other classes.
+• A derived class must override all pure virtual functions to become a normal concrete class.
+• If a derived class does not override all pure virtual functions, it also remains abstract.
+
+Example:
+    class Base
+    {
+    public:
+        virtual void display() = 0;
+    };
+
+    class Derived : public Base
+    {
+    public:
+        void display()
+        {
+            cout << "Displaying Derived Class";
+        }
+    };
+
+
+🔹 Simple Example
+-----------------
+    #include <iostream>
+    using namespace std;
+
+    class Animal
+    {
+    public:
+        virtual void sound() = 0;
+    };
+
+    class Dog : public Animal
+    {
+    public:
+        void sound()
+        {
+            cout << "Dog barks";
+        }
+    };
+
+    int main()
+    {
+        Dog d;
+        d.sound();
+
+        return 0;
+    }
+
+Output:
+    Dog barks
+
+
+📝 Quick Revision
+-----------------
+• Pure virtual function → virtual function declared with = 0.
+• Abstract class → class containing at least one pure virtual function.
+• Abstract class object → Cannot be created directly.
+• Derived class → Must override pure virtual functions to create its object.
+• Main purpose → Provides abstraction and a common interface.
+
+
+⚠️ Note:
+The correct term is "Abstract Base Class", not "Virtual Base Class".
+
+A "virtual base class" is a different C++ concept related to multiple inheritance.
