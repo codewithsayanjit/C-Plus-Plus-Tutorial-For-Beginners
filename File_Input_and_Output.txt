@@ -1,0 +1,106 @@
+📁 File Input and Output in C++
+
+📌 What is a File?
+
+A file is a collection of data that is stored on a disk.
+
+Anything written inside a file is called its content or data. For example, "#include" is a piece of text/content in a C++ source file.
+
+A text file is a combination of different types of characters. For example, the semicolon ";" is a character.
+
+🔤 ASCII Code
+
+Computers represent characters using codes such as ASCII.
+
+Every ASCII character is mapped to a decimal number.
+
+Example:
+- Character: A
+- ASCII Code: 65
+
+The decimal number is represented in binary form so that the computer can process it using its digital electronic circuits.
+
+💡 Why does a computer use binary?
+
+A computer's digital circuits work with two basic states:
+- 0 = False / OFF
+- 1 = True / ON
+
+Therefore, computers use binary numbers made up of 0 and 1.
+
+📂 File Input and Output in C++
+
+A file can be of any type, such as:
+- C++ program file
+- Text file
+- Game file
+- Image file
+- Other types of files
+
+There are two main operations that can be performed on files:
+
+1. 📖 Read File
+2. ✍️ Write File
+
+🖥️ Console Input and Output
+
+The user can communicate with a C++ program through the keyboard and monitor.
+
+1. ⌨️ Console Input
+
+The user can provide input to the C++ program using the keyboard with:
+
+cin >>
+
+Example:
+cin >> name;
+
+2. 🖥️ Console Output
+
+The C++ program can display output on the screen/monitor using:
+
+cout <<
+
+Example:
+cout << "Hello";
+
+📄 File Write
+
+The C++ program can write data into a file.
+
+Flow:
+C++ Program ➡️ File
+
+📖 File Read
+
+The C++ program can read data from a file.
+
+Flow:
+File ➡️ C++ Program
+
+🔄 Simple File I/O Flow
+
+⌨️ Keyboard
+      ↓
+  cin >>
+      ↓
+🧑‍💻 C++ Program
+      ↓
+  cout <<
+      ↓
+🖥️ Console Output
+
+The C++ program can also:
+🧑‍💻 C++ Program ➡️ ✍️ Write ➡️ 📄 File
+📄 File ➡️ 📖 Read ➡️ 🧑‍💻 C++ Program
+
+📝 Summary
+
+- 📁 A file stores data on a disk.
+- 🔤 A text file contains different characters.
+- 🔢 ASCII assigns decimal codes to characters.
+- 💻 Computers process data using binary values, 0 and 1.
+- 📖 Files can be read.
+- ✍️ Files can be written.
+- ⌨️ cin >> is used for console input.
+- 🖥️ cout << is used for console output.
