@@ -21,9 +21,6 @@ int main()
     // ifstream is used for reading data from a file
     ifstream in("sampleB.txt");
 
-    // Reading a word from sampleB.txt
-    in >> st2;
-
     // Reading a complete line from sampleB.txt
     getline(in, st2);
 
