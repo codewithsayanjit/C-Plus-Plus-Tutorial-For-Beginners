@@ -1,0 +1,312 @@
+📘 C++ TEMPLATES
+====================
+
+📌 ROADMAP
+----------
+1. What is a template in C++ programming?
+2. Why templates?
+3. Syntax
+
+
+1️⃣ WHAT IS A TEMPLATE IN C++ PROGRAMMING?
+------------------------------------------
+
+A template is a feature of C++ that allows us to define data types as parameters.
+
+It helps us reduce repetition because we do not need to write the same class again and again for different data types.
+
+For example, suppose we want a Vector class for:
+• int
+• float
+• char
+• double
+
+Without templates, we may have to create separate classes for each data type.
+
+This violates the DRY rule:
+
+DRY = Don't Repeat Yourself 🚫
+
+Templates solve this problem by allowing us to write the class only once and use it with different data types. ✅
+
+💡 SIMPLE IDEA
+--------------
+
+Classes are templates for objects.
+
+Similarly:
+
+Templates are templates for classes.
+
+        CLASS
+          ↓
+       Objects
+
+      TEMPLATE
+          ↓
+        Classes
+
+
+2️⃣ WHY TEMPLATES?
+------------------
+
+There are two main reasons to use templates:
+
+1. DRY Rule
+2. Generic Programming
+
+
+🔹 1. DRY RULE
+--------------
+
+Suppose we want a Vector for three data types:
+
+        int Vector
+            ↓
+      ┌───────────┐
+      │ Same Code │
+      └───────────┘
+
+        float Vector
+            ↓
+      ┌───────────┐
+      │ Same Code │
+      └───────────┘
+
+        char Vector
+            ↓
+      ┌───────────┐
+      │ Same Code │
+      └───────────┘
+
+❌ Problem:
+We have to repeat almost the same code again and again.
+
+        int      → write code
+        float    → write code again
+        char     → write code again
+
+✅ Solution:
+Use a template!
+
+        ┌─────────────────────┐
+        │   C++ TEMPLATE      │
+        │                     │
+        │   Type = T          │
+        └──────────┬──────────┘
+                   │
+          ┌────────┼────────┐
+          ↓        ↓        ↓
+        int      float     char
+          │        │        │
+          └────────┼────────┘
+                   ↓
+          Same class/code
+
+
+🔹 2. GENERIC PROGRAMMING
+-------------------------
+
+It is called generic programming because we declare the template only once.
+
+The same template can then work with different data types.
+
+Example:
+
+        TEMPLATE
+           │
+     ┌─────┼─────┬──────┐
+     ↓     ↓     ↓      ↓
+    int  float  char  double
+
+One template → Many data types 🎯
+
+
+3️⃣ VECTOR WITHOUT TEMPLATE
+---------------------------
+
+A simple Vector class for int data type may look like this:
+
+class vector {
+    int *arr;
+    int size;
+
+    public:
+         methods
+};
+
+
+❌ If we want float, char, double, etc.,
+we would need to repeat the class.
+
+
+4️⃣ C++ TEMPLATE SYNTAX
+-----------------------
+
+Basic syntax:
+
+template <class T>
+class vector
+{
+    T *arr;
+    int size;
+
+    public:
+        vector(T* arr)
+        {
+             code
+        }
+
+         and many other methods
+};
+
+
+🧠 UNDERSTANDING THE SYNTAX
+---------------------------
+
+Step 1️⃣:
+We declare a template using:
+
+template <class T>
+
+Here, T is a template parameter.
+
+        template
+           │
+           ↓
+     ┌───────────┐
+     │ class T   │
+     └───────────┘
+           │
+           ↓
+     Data type placeholder
+
+
+Step 2️⃣:
+We define the Vector class:
+
+class vector
+
+Step 3️⃣:
+Instead of writing a fixed data type such as int, we write:
+
+T *arr;
+
+Here, T represents whatever data type we provide later.
+
+
+Step 4️⃣:
+When creating an object, we can specify the required data type.
+
+For example:
+
+vector<int> v1;
+vector<float> v2;
+vector<char> v3;
+
+
+📊 TEMPLATE DIAGRAM
+-------------------
+
+             C++ TEMPLATE
+                  │
+                  ↓
+        ┌──────────────────┐
+        │   template <T>   │
+        └────────┬─────────┘
+                 │
+                 ↓
+          ┌──────────────┐
+          │ vector class │
+          │              │
+          │ T *arr       │
+          │ int size     │
+          └──────┬───────┘
+                 │
+       ┌─────────┼─────────┐
+       ↓         ↓         ↓
+   vector<int> vector<float> vector<char>
+       │         │         │
+       ↓         ↓         ↓
+      int       float      char
+
+
+💻 COMPLETE BASIC EXAMPLE
+-------------------------
+
+#include <iostream>
+using namespace std;
+
+template <class T>
+class vector
+{
+    T *arr;
+    int size;
+
+public:
+    vector(T* arr)
+    {
+         code
+    }
+
+     and many other methods
+};
+
+int main()
+{
+    ? Example objects
+     vector<int> v1;
+     vector<float> v2;
+     vector<char> v3;
+
+    return 0;
+}
+
+
+⭐ KEY POINTS TO REMEMBER
+-------------------------
+
+• Template allows data types to be passed as parameters.
+• It reduces code repetition.
+• It follows the DRY (Don't Repeat Yourself) principle.
+• Templates support generic programming.
+• T is commonly used as a placeholder for a data type.
+• template <class T> declares a class template.
+• T can represent int, float, char, double, etc.
+• The same class can be used with different data types.
+
+🎯 QUICK MEMORY TRICK
+---------------------
+
+Template = Write Once + Use with Many Data Types
+
+        ✍️ Write Once
+             ↓
+        C++ Template
+             ↓
+     ┌───────┼────────┐
+     ↓       ↓        ↓
+    int    float     char
+     ↓       ↓        ↓
+   Reuse   Reuse    Reuse
+
+🚀 CONCLUSION
+-------------
+
+C++ Templates make programs more reusable, flexible, and easier to maintain.
+
+Instead of writing the same class repeatedly for different data types,
+we can write one generic class template and use it with many data types.
+
+                TEMPLATE
+                    ↓
+          ┌─────────┼─────────┐
+          ↓         ↓         ↓
+         int      float      char
+          ↓         ↓         ↓
+        Same      Same      Same
+        Class     Class     Class
+
+Remember:
+
+"Write the code once, use it for many data types." 💡
