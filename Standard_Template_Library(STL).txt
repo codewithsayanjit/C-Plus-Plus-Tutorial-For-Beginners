@@ -1,0 +1,244 @@
+📘 C++ STANDARD TEMPLATE LIBRARY (STL)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 INTRODUCTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The C++ Standard Template Library (STL) is a collection of
+ready-made generic classes and functions.
+
+STL helps programmers write programs faster by providing
+commonly used data structures and algorithms.
+
+💡 Main idea:
+"Do not reinvent something that is already built and tested."
+
+For example, instead of writing your own sorting function,
+you can use the STL sort() function.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⭐ WHY IS STL IMPORTANT FOR COMPETITIVE PROGRAMMING?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ Competitive programming gives us limited time to solve
+   programming problems.
+
+2️⃣ Many problems require common operations such as:
+   • Creating a resizable array
+   • Sorting data
+   • Searching for an element
+   • Managing different data structures
+
+3️⃣ Writing all these functions from scratch takes time.
+
+4️⃣ STL provides ready-to-use classes and functions, so we
+   can focus more on solving the actual problem.
+
+🧠 Simple example:
+
+Without STL:
+   Problem → Write data structure → Write functions
+           → Test functions → Solve problem
+
+With STL:
+   Problem → Use STL container/algorithm → Solve problem
+
+🏎️ Real-life example:
+A company that builds cars does not make every component
+from raw materials every time. It uses existing components
+and improves them further.
+
+Similarly, STL gives us tested building blocks that we can
+reuse in our programs.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧩 COMPONENTS OF STL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STL has three main components:
+
+        ┌─────────────────────────┐
+        │          C++ STL        │
+        └────────────┬────────────┘
+                     │
+        ┌────────────┼────────────┐
+        ↓            ↓            ↓
+   📦 Containers  ⚙️ Algorithms  🔄 Iterators
+
+1️⃣ Containers
+2️⃣ Algorithms
+3️⃣ Iterators
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 1. CONTAINERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A container is an object that stores data.
+
+STL provides different containers, and each container has
+its own advantages and uses.
+
+Examples:
+   • vector
+   • list
+   • deque
+   • set
+   • map
+   • stack
+   • queue
+
+Containers are implemented as template classes, so they can
+be used with different data types.
+
+Example:
+
+   vector<int> numbers;
+
+Here, vector is a container used to store integers.
+
+📦 Container diagram:
+
+   ┌─────────────────────────────┐
+   │          Container          │
+   ├─────┬─────┬─────┬─────┬─────┤
+   │ 10  │ 20  │ 30  │ 40  │ 50  │
+   └─────┴─────┴─────┴─────┴─────┘
+      ↑                 ↑
+    Iterator          Iterator
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚙️ 2. ALGORITHMS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Algorithms are a set of instructions used to manipulate
+data and produce a desired result.
+
+STL provides many ready-made algorithms.
+
+Examples:
+   • sort()
+   • find()
+   • reverse()
+   • max()
+   • min()
+   • count()
+
+These algorithms are generally provided as template
+functions and can work with different containers/ranges.
+
+Example:
+
+   sort(numbers.begin(), numbers.end());
+
+This sorts the elements of the container in ascending order.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄 3. ITERATORS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+An iterator is an object that refers to an element or
+position in a container.
+
+It works in a way similar to a pointer.
+
+The basic job of an iterator is to connect STL algorithms
+with containers.
+
+Example:
+
+   vector<int>::iterator it;
+
+An iterator can move through the elements of a container.
+
+Iterator diagram:
+
+   ┌────┬────┬────┬────┬────┐
+   │ 10 │ 20 │ 30 │ 40 │ 50 │
+   └────┴────┴────┴────┴────┘
+          ↑
+          │
+       Iterator
+          │
+          ↓
+       points to 20
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔗 HOW CONTAINERS, ALGORITHMS AND ITERATORS WORK TOGETHER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Suppose we have a container of integers:
+
+   ┌────┬────┬────┬────┬────┐
+   │ 40 │ 10 │ 50 │ 20 │ 30 │
+   └────┴────┴────┴────┴────┘
+      ↑                    ↑
+    begin()              end()
+
+We want to sort these numbers in ascending order.
+
+          📦 Container
+               │
+               │ elements
+               ↓
+      ┌────────────────────┐
+      │ 40  10  50  20  30 │
+      └────────────────────┘
+               │
+               │ Iterator
+               ↓
+        🔄 begin() ... end()
+               │
+               ↓
+          ⚙️ sort()
+               │
+               ↓
+      ┌────────────────────┐
+      │ 10  20  30  40  50 │
+      └────────────────────┘
+               │
+               ↓
+          ✅ Sorted Data
+
+In simple words:
+
+📦 Container
+   ↓
+Stores the data
+
+🔄 Iterator
+   ↓
+Points to the data/range
+
+⚙️ Algorithm
+   ↓
+Performs the required operation
+
+Together:
+
+        📦 Container
+             ↕
+        🔄 Iterator
+             ↕
+        ⚙️ Algorithm
+             ↓
+        ✅ Desired Result
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 QUICK SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📦 Containers
+   Store data.
+   Examples: vector, list, set, map, stack, queue.
+
+⚙️ Algorithms
+   Perform operations on data.
+   Examples: sort(), find(), reverse(), count().
+
+🔄 Iterators
+   Refer to elements/positions in containers and connect
+   containers with algorithms.
+
+⭐ STL saves time, reduces repeated coding, and provides
+reusable, tested building blocks for C++ programming.
+
